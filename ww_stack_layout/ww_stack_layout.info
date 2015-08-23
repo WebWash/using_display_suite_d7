@@ -1,0 +1,4 @@
+name = Stack layout
+description = Stack layout is a custom Display Suite layout.
+package = WebWash
+core = 7.x

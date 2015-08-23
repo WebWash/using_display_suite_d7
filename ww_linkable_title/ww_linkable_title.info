@@ -1,0 +1,4 @@
+name = Linkable title
+description = Custom linkable title field for Display Suite.
+package = WebWash
+core = 7.x

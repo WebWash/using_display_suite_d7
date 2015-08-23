@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Primarily Drupal module for the stack layout.
+ */
+
+/**
+ * Implements hook_ds_layout_info().
+ */
+function ww_stack_layout_ds_layout_info() {
+  $path = drupal_get_path('module', 'ww_stack_layout');
+
+  $layouts = array(
+    'ww_stack_layout' => array(
+      'label' => t('WW: Stack layout'),
+      'path' => $path . '/ds_layouts/ww_stack_layout',
+      'regions' => array(
+        'header' => t('Header'),
+        'footer' => t('Footer'),
+      ),
+      'css' => TRUE,
+      'image' => FALSE,
+    ),
+  );
+
+  return $layouts;
+}

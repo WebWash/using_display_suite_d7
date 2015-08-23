@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Primarily Drupal module for the linable title field.
+ */
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function ww_linkable_title_ds_fields_info($entity_type) {
+  $fields = array();
+
+  $fields['ww_linkable_title'] = array(
+    'title' => t('WW: Linkable title'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => 'ww_linkable_title_ds_fields_linkable_title',
+    'properties' => array(
+      'formatters' => array(
+        'title_default' => t('Default'),
+        'title_link' => t('Title link'),
+      ),
+    )
+  );
+
+  return array('node' => $fields);
+}
+
+/**
+ * WW: Linkable title DS callback function.
+ *
+ * @param $field
+ * @return string
+ */
+function ww_linkable_title_ds_fields_linkable_title($field) {
+  // Get entity object.
+  $entity = $field['entity'];
+  // Switch between formatters.
+  switch ($field['formatter']) {
+    case 'title_default':
+      // Return title.
+      return check_plain($entity->title);
+    case 'title_link':
+      // Return title and link.
+      return l(check_plain($entity->title), 'node/' . $entity->nid);
+  }
+}
